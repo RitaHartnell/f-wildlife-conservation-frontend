@@ -45,7 +45,7 @@ class App extends React.Component {
       body: JSON.stringify({ user: userObj })
     })
     .then(resp => resp.json())
-    .then(console.log)
+    .then(data => this.setState({ user: data }))
   }
 
 
