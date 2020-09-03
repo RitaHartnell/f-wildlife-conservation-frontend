@@ -5,13 +5,31 @@ import Home from './Components/Home';
 import Search from './Components/Search';
 import Navbar from './Components/Navbar';
 import UserProfile from './Components/UserProfile';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {BrowserRouter, Route, Redirect} from 'react-router-dom';
+import Signup from './Components/Signup';
 
+const api='test'
 
 class App extends React.Component {
 
   state = {
-    animals : []
+    animals : [],
+    user: null, //for testing- change back to obj
+    search: ""
+  }
+
+  signupHandler = (userObj) => {
+    const settings = {
+      method: "POST",
+      headers: {
+        accepts: "application/json",
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({ user: userObj })
+    }
+    fetch(api, settings)
+    .then(resp => resp.json())
+    .then(console.log)
   }
 
   render() {  
@@ -22,8 +40,8 @@ class App extends React.Component {
         {/*basic main page?*/}
         <Route exact path="/" component={Home} />
         <Route exact path="/userprofile" render={() => <UserProfile />} />
-        <Route exact path="/search" render={() => <Search />} />
-        <Route exact path="/animals" render={() => <AnimalList />} /> 
+        <Route exact path="/search" render={() => <Search user={this.state.user}/>} />
+        <Route exact path="/animals" render={() => <AnimalList user={this.state.user}/>} /> 
       </div>
       </BrowserRouter>
     );
