@@ -10,10 +10,11 @@ class UserProfile extends React.Component {
     }
 
     render () {    
+        console.log(this.props.user)
         return (
         <>
         {this.props.user ?    
-            
+    
             <div>
                 {/*I am going to render my favorites here !*/}
                 <h2>I am user and I am here!</h2>
