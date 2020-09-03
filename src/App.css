@@ -1,11 +1,21 @@
 .App {
   text-align: center;
+  margin-top: 70px
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
+
+.nav-bar{
+  position: fixed;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  width: 100px;
+  top: 0;
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

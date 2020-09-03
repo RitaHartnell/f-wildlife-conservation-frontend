@@ -7,7 +7,7 @@ function Search (props){
             <input
                 type="text"
                 placeholder={"Search for Animals!"}
-                onChange={/*will add function here*/  nil}
+                onChange={/*will add function here*/  null}
             />
         </div>
     )
