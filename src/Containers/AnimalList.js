@@ -8,32 +8,36 @@ class AnimalList extends React.Component {
         super(props)
         this.state={
             sortAnimals: [],
+            display: [],
             alpha: true
         }
     }
       
       sortAlphabetically = () => {
         const sortByName = this.props.animals.sort((a,b) => (a.name > b.name) ? 1 : -1)
-        this.setState({ sortAnimals: sortByName, alpha: true})
+        this.setState({ sortAnimals: sortByName, alpha: true, display: []})
       }
       
       sortStatus = () => {
         const statusOrder = ["Critically-Endangered", "Endangered", "Near-Threatened", "Vulnerable", "Least-Concern"]
         const sortByStatus = this.props.animals.sort((a,b) => statusOrder.indexOf(a.status) - (statusOrder.indexOf(b.status)))
-        this.setState({ sortAnimals: sortByStatus, alpha: false})
+        this.setState({ sortAnimals: sortByStatus, alpha: false, display: []})
       }
       
-
+      clickHandler = (animalObj) => {
+        this.setState({
+            display: [...this.state.display, animalObj]
+        })
+      }
 
     render(){
-        console.log(this.props.animals)
         return (
             <>
             {this.props.user !== null ?    
                 <div>
                     <h1>Search Animals</h1>
                     <Search value={this.props.searchTerm} changeHandler={this.props.searchHandler} sortAlphabetically={this.sortAlphabetically} sortStatus={this.sortStatus} alpha={this.state.alpha}/>
-                    {this.props.animals.map(animalObj => < AnimalCard key={animalObj.id} animal={animalObj}/>)}
+                    {this.props.animals.map(animalObj => < AnimalCard key={animalObj.id} animal={animalObj} clickHandler={this.clickHandler} display={this.state.display.includes(animalObj)}/>)}
                 </div>
             :
                 <Redirect to="/"/>

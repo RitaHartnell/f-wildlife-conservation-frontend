@@ -77,14 +77,15 @@ class App extends React.Component {
 */
 
 searchHandler = e => {
-  console.log(e.target.value)
   this.setState({ searchTerm: e.target.value })
+  //also do the patch request.
 }
 searchArray = () => {
   return this.state.animals.filter(animalObj => animalObj.name.toLowerCase().includes(this.state.searchTerm.toLowerCase()))  
 }
 
   render() {  
+    console.log(this.state.user)
     return (
       <BrowserRouter>
       <div className="App">
