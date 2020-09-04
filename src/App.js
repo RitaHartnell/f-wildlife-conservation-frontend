@@ -62,6 +62,11 @@ class App extends React.Component {
     .then(data => this.setState({ user: data}))
   }
 
+  // profileGetter = (userObj) => {
+  //   fetch(`${api}/profile`)
+  //   .then(resp => resp.json())
+  //   .then(data => console.log(data))
+  // }
 /*   fetchFavorites = () => {
     fetch(`${api}/favorite${this.state.user.id?}`)
     .then(resp => resp.json())
