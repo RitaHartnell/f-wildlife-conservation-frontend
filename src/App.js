@@ -4,7 +4,7 @@ import Home from './Components/Home';
 import AnimalList from './Containers/AnimalList';
 import Navbar from './Components/Navbar';
 import UserProfile from './Components/UserProfile';
-import {BrowserRouter, Route, Redirect} from 'react-router-dom';
+import {BrowserRouter, Route} from 'react-router-dom';
 import Signup from './Components/Signup';
 import Login from './Components/Login';
 
@@ -14,17 +14,15 @@ class App extends React.Component {
 
   state = {
     animals : [],
-    sortAnimals: [],
     user: null,
     searchHistory: [],
     favorites: [],
-    alpha: false
   }
 
   fetchAnimals = () => {
     fetch(`${api}/animals`)
     .then(resp => resp.json())
-    .then(data => this.setState({animals: data, sortAnimals: data}))
+    .then(data => this.setState({animals: data}))
   }
 
 
@@ -60,7 +58,7 @@ class App extends React.Component {
       body: JSON.stringify({ user: userObj })
     })
     .then(resp => resp.json())
-    .then(data => this.setState({ user: data }))
+    .then(data => this.setState({ user: data}))
   }
 
 /*   fetchFavorites = () => {
@@ -77,21 +75,6 @@ class App extends React.Component {
   
 */
 
-changeHandler = e => {
-  this.setState({ searchTerm: e.target.value })
-}
-
-sortAlphabetically = () => {
-  const sortByName = this.state.animals.sort((a,b) => (a.name > b.name) ? 1 : -1)
-  this.setState({ sortAnimals: sortByName, alpha: true})
-}
-
-sortStatus = () => {
-  const statusOrder = ["Critically-Endangered", "Endangered", "Near-Threatened", "Vulnerable", "Least-Concern"]
-  const sortByStatus = this.state.animals.sort((a,b) => statusOrder.indexOf(a.status) - (statusOrder.indexOf(b.status)))
-  this.setState({ sortAnimals: sortByStatus, alpha: false})
-}
-
   render() {  
     return (
       <BrowserRouter>
@@ -102,7 +85,7 @@ sortStatus = () => {
         <Route exact path="/signup" render={()=> <Signup submitHandler={this.signupHandler}/>}/>
         <Route exact path="/login" render={()=> <Login submitHandler={this.loginHandler}/>}/>
         <Route exact path="/userprofile" render={() => <UserProfile user={this.state.user}/>} />
-        <Route exact path="/search" render={() => <AnimalList user={this.state.user} animals={this.state.sortAnimals} sortAlphabetically={this.sortAlphabetically} sortStatus={this.sortStatus}/>} alpha={this.state.alpha} changeHandler={this.changeHandler}/>
+        <Route exact path="/search" render={() => <AnimalList user={this.state.user} animals={this.state.animals}/>} />
       </div>
       </BrowserRouter>
     );

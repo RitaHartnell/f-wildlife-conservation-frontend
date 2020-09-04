@@ -1,6 +1,4 @@
 import React from 'react'
-import {Redirect} from 'react-router-dom'
-
 
 function Search (props){
     return (
@@ -9,7 +7,8 @@ function Search (props){
                     type="text"
                     placeholder={"Search for Animals!"}
                     value={props.value}
-                    onChange={e => props.searchHandler(e)}/>
+                    onChange={props.searchHandler}/>
+
                   <strong>Sort by:</strong>
                   <label>
                     <input type="radio" value="Alphabetically" checked={props.alpha ? true : false} onChange={() => {props.sortAlphabetically()}}/>
