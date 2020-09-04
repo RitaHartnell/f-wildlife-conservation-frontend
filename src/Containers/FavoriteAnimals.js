@@ -6,7 +6,7 @@ function FavoriteAnimals (props) {
         <div>
             <h1>I am here!</h1>
             {/*I'm going to render a users favorites as an AnimalCard!*/}
-            <AnimalCard/>
+            {props.animals.map(animalObj => < AnimalCard key={animalObj.id} animal={animalObj}/>)}
         </div>
     )
 }
