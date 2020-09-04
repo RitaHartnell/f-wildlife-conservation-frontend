@@ -4,7 +4,7 @@ import Home from './Components/Home';
 import AnimalList from './Containers/AnimalList';
 import Navbar from './Components/Navbar';
 import UserProfile from './Components/UserProfile';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {BrowserRouter, Route, Redirect} from 'react-router-dom';
 import Signup from './Components/Signup';
 import Login from './Components/Login';
 
@@ -28,12 +28,19 @@ class App extends React.Component {
 
 
   componentDidMount() {
-
-    this.fetchAnimals()
-    //if(this.state.user !== null)
-    // this.favoriteHandler()
-    // this.searchHistoryHandler()
-
+    const token = localStorage.getItem("token")
+    console.log(token)
+    if(token){
+      fetch(`${api}/profile`, {
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}`}
+      })
+      .then(resp => resp.json())
+      .then(this.fetchAnimals())
+    }else{
+      return <Redirect to="/"/>
+    }
+  
   }
 
   signupHandler = (userObj) => {
@@ -59,35 +66,47 @@ class App extends React.Component {
       body: JSON.stringify({ user: userObj })
     })
     .then(resp => resp.json())
-    .then(data => this.setState({ user: data}))
+    .then(data => {
+      localStorage.setItem("token", data.jwt)
+      this.setState({ user: data, favorites: data.user.animals})
+    })
   }
+
+  favoriteHandler = (animalObj) => {
+    console.log(animalObj)
+    console.log(this.state.user)
+    //console.log(this.state.favorites)
+    const newFav = {
+      animal: animalObj
+    }
+    const settings = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newFav)    
+    }
+    fetch(`${api}/favorites`, settings) 
+    .then(resp => resp.json())
+    .then(data => console.log())
+  
+  }
+
 
   // profileGetter = (userObj) => {
   //   fetch(`${api}/profile`)
   //   .then(resp => resp.json())
   //   .then(data => console.log(data))
   // }
-/*   fetchFavorites = () => {
-    fetch(`${api}/favorite${this.state.user.id?}`)
-    .then(resp => resp.json())
-    .then(console.log)
-  }
 
-  fetchSearchHistory = () => {
-    fetch(`${api}/search${this.state.user.id?}`)
-    .then(resp => resp.json())
-    .then(console.log)
-  } 
-  
-*/
 
 searchHandler = e => {
   this.setState({ searchTerm: e.target.value })
   //also do the patch request.
 }
+
 searchArray = () => {
   return this.state.animals.filter(animalObj => animalObj.name.toLowerCase().includes(this.state.searchTerm.toLowerCase()))  
 }
+
 
   render() {  
     console.log(this.state.user)
@@ -100,7 +119,7 @@ searchArray = () => {
         <Route exact path="/signup" render={()=> <Signup submitHandler={this.signupHandler}/>}/>
         <Route exact path="/login" render={()=> <Login submitHandler={this.loginHandler}/>}/>
         <Route exact path="/userprofile" render={() => <UserProfile user={this.state.user}/>} />
-        <Route exact path="/search" render={() => <AnimalList user={this.state.user} animals={this.searchArray()} searchHandler={this.searchHandler}/>} />
+        <Route exact path="/search" render={() => <AnimalList user={this.state.user} animals={this.searchArray()} searchHandler={this.searchHandler} favoriteHandler={this.favoriteHandler}/>} />
       </div>
       </BrowserRouter>
     );

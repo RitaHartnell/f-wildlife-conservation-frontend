@@ -17,6 +17,7 @@ import React from 'react'
                 <p> population: {props.animal.population}</p>
                 <p> locations: {props.animal.locations.join(', ')} </p>
                 <p> facts: {props.animal.facts}</p>
+                <button className="favorite-btn" onClick={()=> {props.favoriteHandler(props.animal)}}>Add to Favorites</button>
             </>
             :
             null
