@@ -47,7 +47,7 @@ class App extends React.Component {
       body: JSON.stringify({ user: userObj })
     })
     .then(resp => resp.json())
-    .then(data => this.setState({ user: data }))
+    .then(data => this.setState({ user: data}))
   }
 
   loginHandler = (userObj) => {

@@ -4,8 +4,6 @@ import {Redirect} from 'react-router-dom'
 
 function Search (props){
     return (
-        <>
-        {props.user ?  
             <div>
                 <input
                     type="text"
@@ -22,10 +20,6 @@ function Search (props){
                     Status
                   </label>
             </div>
-        :
-            <Redirect to="/"/>
-        }
-        </>
     )
 }
 

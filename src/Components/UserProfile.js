@@ -9,15 +9,16 @@ class UserProfile extends React.Component {
         searches: []
     }
 
-    render () {    
+    render () {  
+        console.log(this.props.user)  
         return (
         <>
-        {this.props.user ?    
+        {this.props.user !== null ?    
     
             <div>
                 {/*I am going to render my favorites here !*/}
                 <h2>I am user and I am here!</h2>
-                <FavoriteAnimals/>
+                {null /*<FavoriteAnimals/> !*/}
             </div>
         :
 
