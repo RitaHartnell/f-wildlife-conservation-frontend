@@ -3,11 +3,11 @@ import React from 'react'
 function Search (props){
     return (
             <div>
-                <input
-                    type="text"
-                    placeholder={"Search for Animals!"}
-                    value={props.value}
-                    onChange={props.searchHandler}/>
+                    <input
+                        type="text"
+                        placeholder={"Search for Animals!"}
+                        value={props.value}
+                        onChange={props.changeHandler}/>
 
                   <strong>Sort by:</strong>
                   <label>

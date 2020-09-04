@@ -10,7 +10,7 @@ function AnimalCard (props){
         <p> status: {props.animal.status}</p>
         <p> scientific name: {props.animal.scientific_name}</p>
         <p> population: {props.animal.population}</p>
-        <p> locations: {props.animal.locations} </p>
+        <p> locations: {props.animal.locations.join(', ')} </p>
         <p> facts: {props.animal.facts}</p>
         </div>
     )

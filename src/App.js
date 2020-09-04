@@ -17,6 +17,7 @@ class App extends React.Component {
     user: null,
     searchHistory: [],
     favorites: [],
+    searchTerm: ""
   }
 
   fetchAnimals = () => {
@@ -75,6 +76,14 @@ class App extends React.Component {
   
 */
 
+searchHandler = e => {
+  console.log(e.target.value)
+  this.setState({ searchTerm: e.target.value })
+}
+searchArray = () => {
+  return this.state.animals.filter(animalObj => animalObj.name.toLowerCase().includes(this.state.searchTerm.toLowerCase()))  
+}
+
   render() {  
     return (
       <BrowserRouter>
@@ -85,7 +94,7 @@ class App extends React.Component {
         <Route exact path="/signup" render={()=> <Signup submitHandler={this.signupHandler}/>}/>
         <Route exact path="/login" render={()=> <Login submitHandler={this.loginHandler}/>}/>
         <Route exact path="/userprofile" render={() => <UserProfile user={this.state.user}/>} />
-        <Route exact path="/search" render={() => <AnimalList user={this.state.user} animals={this.state.animals}/>} />
+        <Route exact path="/search" render={() => <AnimalList user={this.state.user} animals={this.searchArray()} searchHandler={this.searchHandler}/>} />
       </div>
       </BrowserRouter>
     );
