@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import AnimalList from './Containers/AnimalList';
 import Home from './Components/Home';
 import Search from './Components/Search';
 import Navbar from './Components/Navbar';
@@ -15,14 +14,16 @@ class App extends React.Component {
 
   state = {
     animals : [],
+    sortAnimals: [],
     user: null,
-    search: ""
+    searchHistory: [],
+    favorites: [],
   }
 
   fetchAnimals = () => {
     fetch(`${api}/animals`)
     .then(resp => resp.json())
-    .then(data => this.setState({animals: data}))
+    .then(data => this.setState({animals: data, sortAnimals: data}))
   }
 
 
@@ -86,8 +87,7 @@ class App extends React.Component {
         <Route exact path="/signup" render={()=> <Signup submitHandler={this.signupHandler}/>}/>
         <Route exact path="/login" render={()=> <Login submitHandler={this.loginHandler}/>}/>
         <Route exact path="/userprofile" render={() => <UserProfile user={this.state.user}/>} />
-        <Route exact path="/search" render={() => <Search user={this.state.user} animals={this.state.animals} />} />
-        <Route exact path="/animals" render={() => <AnimalList user={this.state.user} animals={this.state.animals}/>} /> 
+        <Route exact path="/search" render={() => <AnimalList user={this.state.user} animals={this.state.sortAnimals} sortAlphabetically={this.sortAlphabetically} sortStatus={this.sortStatus}/>} alpha={this.state.alpha} />
       </div>
       </BrowserRouter>
     );
