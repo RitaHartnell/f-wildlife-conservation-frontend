@@ -29,18 +29,19 @@ class App extends React.Component {
 
   componentDidMount() {
     const token = localStorage.getItem("token")
-    console.log(token)
     if(token){
       fetch(`${api}/profile`, {
         method: "GET",
         headers: { Authorization: `Bearer ${token}`}
       })
       .then(resp => resp.json())
-      .then(this.fetchAnimals())
+      .then(data => {
+      this.setState({ user: data})
+      })
     }else{
       return <Redirect to="/"/>
     }
-  
+    this.fetchAnimals()
   }
 
   signupHandler = (userObj) => {
@@ -72,6 +73,11 @@ class App extends React.Component {
     })
   }
 
+  logOutHandler = () => {
+    localStorage.removeItem("token")
+    this.setState({ user: null })
+  }
+
   favoriteHandler = (animalObj) => {
     console.log(animalObj)
     console.log(this.state.user)
@@ -89,7 +95,6 @@ class App extends React.Component {
     .then(data => console.log())
   
   }
-
 
   // profileGetter = (userObj) => {
   //   fetch(`${api}/profile`)
@@ -109,15 +114,15 @@ searchArray = () => {
 
 
   render() {  
-    console.log(this.state.user)
     return (
       <BrowserRouter>
       <div className="App">
-        <Navbar />
+        <Navbar user={this.state.user} logOutHandler={this.logOutHandler}/>
         {/*basic main page?*/}
         <Route exact path="/" component={Home} />
         <Route exact path="/signup" render={()=> <Signup submitHandler={this.signupHandler}/>}/>
         <Route exact path="/login" render={()=> <Login submitHandler={this.loginHandler}/>}/>
+
         <Route exact path="/userprofile" render={() => <UserProfile user={this.state.user}/>} />
         <Route exact path="/search" render={() => <AnimalList user={this.state.user} animals={this.searchArray()} searchHandler={this.searchHandler} favoriteHandler={this.favoriteHandler}/>} />
       </div>
