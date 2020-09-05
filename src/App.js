@@ -36,10 +36,8 @@ class App extends React.Component {
       })
       .then(resp => resp.json())
       .then(data => {
-      this.setState({ user: data})
+      this.setState({ user: data, favorites: data.user.animals})
       })
-    }else{
-      return <Redirect to="/"/>
     }
     this.fetchAnimals()
   }
@@ -79,21 +77,29 @@ class App extends React.Component {
   }
 
   favoriteHandler = (animalObj) => {
-    console.log(animalObj)
-    console.log(this.state.user)
-    //console.log(this.state.favorites)
     const newFav = {
-      animal: animalObj
+      animal_id: animalObj.id
     }
     const settings = {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {   
+        Authorization: `Bearer ${localStorage.getItem("token")}`,      
+        accepts: "application/json",
+        "content-type": "application/json"},
       body: JSON.stringify(newFav)    
     }
     fetch(`${api}/favorites`, settings) 
     .then(resp => resp.json())
-    .then(data => console.log())
+    .then(data => {
+      const newfav = data.favorite
+      this.setState({ favorites: [...this.state.favorites, newfav]})
+    })
   
+  }
+
+  deleteUser = (userId) => {
+    fetch(`${api}/${userId}`, {method: "DELETE"})
+    return <Redirect to="/"/>
   }
 
   // profileGetter = (userObj) => {
@@ -105,7 +111,7 @@ class App extends React.Component {
 
 searchHandler = e => {
   this.setState({ searchTerm: e.target.value })
-  //also do the patch request.
+  
 }
 
 searchArray = () => {
@@ -114,6 +120,7 @@ searchArray = () => {
 
 
   render() {  
+  // console.log(this.state.favorites)
     return (
       <BrowserRouter>
       <div className="App">
