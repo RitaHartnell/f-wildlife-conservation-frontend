@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import Home from './Components/Home';
 import AnimalList from './Containers/AnimalList';
 import Navbar from './Components/Navbar';
 import UserProfile from './Components/UserProfile';
-import {BrowserRouter, Route, Redirect} from 'react-router-dom';
 import Signup from './Components/Signup';
 import Login from './Components/Login';
 
@@ -52,7 +52,7 @@ class App extends React.Component {
       body: JSON.stringify({ user: userObj })
     })
     .then(resp => resp.json())
-    .then(data => this.setState({ user: data}))
+    .then(data => this.setState({ user: data})) 
   }
 
   loginHandler = (userObj) => {
@@ -67,12 +67,14 @@ class App extends React.Component {
     .then(resp => resp.json())
     .then(data => {
       localStorage.setItem("token", data.jwt)
-      this.setState({ user: data, favorites: data.user.animals})
+      this.setState(
+        { user: data, favorites: data.user.animals}, () => this.props.history.push('/'))
     })
   }
 
   logOutHandler = () => {
     localStorage.removeItem("token")
+    this.props.history.push("/login")
     this.setState({ user: null })
   }
 
@@ -127,21 +129,19 @@ searchArray = () => {
 
 
   render() {  
-    console.log(this.state.animals)
     return (
-      <BrowserRouter>
       <div className="App">
         <Navbar user={this.state.user} logOutHandler={this.logOutHandler}/>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/signup" render={()=> <Signup submitHandler={this.signupHandler}/>}/>
-        <Route exact path="/login" render={()=> <Login submitHandler={this.loginHandler}/>}/>
-
-        <Route exact path="/userprofile" render={() => <UserProfile user={this.state.user}/>} />
-        <Route exact path="/search" render={() => <AnimalList user={this.state.user} animals={this.searchArray()} searchHandler={this.searchHandler} favoriteHandler={this.favoriteHandler} unfavoriteHandler={this.unfavoriteHandler} userFavorites={this.state.favorites}/>} />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/signup" render={()=> <Signup submitHandler={this.signupHandler}/>}/>
+          <Route exact path="/login" render={()=> <Login submitHandler={this.loginHandler}/>}/>
+          <Route exact path="/userprofile" render={() => <UserProfile user={this.state.user}/>} />
+          <Route exact path="/search" render={() => <AnimalList user={this.state.user} animals={this.searchArray()} searchHandler={this.searchHandler} favoriteHandler={this.favoriteHandler} unfavoriteHandler={this.unfavoriteHandler} userFavorites={this.state.favorites}/>} />
+        </Switch>
       </div>
-      </BrowserRouter>
-    );
+    )
   }
 }
 
-export default App;
+export default withRouter(App);
