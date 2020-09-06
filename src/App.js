@@ -36,7 +36,7 @@ class App extends React.Component {
       })
       .then(resp => resp.json())
       .then(data => {
-      this.setState({ user: data, favorites: data.user.animals})
+      this.setState({ user: data, favorites: data.user.favorites})
       })
     }
     this.fetchAnimals()
@@ -97,9 +97,16 @@ class App extends React.Component {
   
   }
 
-  deleteUser = (userId) => {
-    fetch(`${api}/${userId}`, {method: "DELETE"})
-    return <Redirect to="/"/>
+  unfavoriteHandler = (animalObj) => {
+   const favoriteObj = this.state.favorites.find(x => x.animal_id === animalObj.id)
+  fetch(`${api}/favorites/${favoriteObj.id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+  })
+  const removeIt = this.state.favorites.filter(x => x !== favoriteObj)
+  this.setState({ favorites: removeIt })
   }
 
   // profileGetter = (userObj) => {
@@ -120,18 +127,17 @@ searchArray = () => {
 
 
   render() {  
-  // console.log(this.state.favorites)
+    console.log(this.state.animals)
     return (
       <BrowserRouter>
       <div className="App">
         <Navbar user={this.state.user} logOutHandler={this.logOutHandler}/>
-        {/*basic main page?*/}
         <Route exact path="/" component={Home} />
         <Route exact path="/signup" render={()=> <Signup submitHandler={this.signupHandler}/>}/>
         <Route exact path="/login" render={()=> <Login submitHandler={this.loginHandler}/>}/>
 
         <Route exact path="/userprofile" render={() => <UserProfile user={this.state.user}/>} />
-        <Route exact path="/search" render={() => <AnimalList user={this.state.user} animals={this.searchArray()} searchHandler={this.searchHandler} favoriteHandler={this.favoriteHandler}/>} />
+        <Route exact path="/search" render={() => <AnimalList user={this.state.user} animals={this.searchArray()} searchHandler={this.searchHandler} favoriteHandler={this.favoriteHandler} unfavoriteHandler={this.unfavoriteHandler} userFavorites={this.state.favorites}/>} />
       </div>
       </BrowserRouter>
     );

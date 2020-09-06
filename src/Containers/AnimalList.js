@@ -9,7 +9,7 @@ class AnimalList extends React.Component {
         this.state={
             sortAnimals: [],
             display: [],
-            alpha: true
+            alpha: true,
         }
     }
       
@@ -37,7 +37,7 @@ class AnimalList extends React.Component {
                 <div>
                     <h1>Search Animals</h1>
                     <Search value={this.props.searchTerm} changeHandler={this.props.searchHandler} sortAlphabetically={this.sortAlphabetically} sortStatus={this.sortStatus} alpha={this.state.alpha}/>
-                    {this.props.animals.map(animalObj => < AnimalCard key={animalObj.id} animal={animalObj} clickHandler={this.clickHandler} favoriteHandler={this.props.favoriteHandler} display={this.state.display.includes(animalObj)}/>)}
+                    {this.props.animals.map(animalObj => < AnimalCard key={animalObj.id} animal={animalObj} clickHandler={this.clickHandler} favoriteHandler={this.props.favoriteHandler} unfavoriteHandler={this.props.unfavoriteHandler} display={this.state.display.includes(animalObj)} favoriteFlag={this.props.userFavorites.filter(fav => fav.animal_id === animalObj.id)}/>)}
                 </div>
             :
                 <Redirect to="/"/>
