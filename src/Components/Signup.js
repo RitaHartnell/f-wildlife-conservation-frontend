@@ -18,11 +18,6 @@ class Signup extends React.Component{
     }
     render(){
         return(
-            // <form onSubmit={this.submitHandler}>
-            //     <input type="text" name="username" placeholder="username" value={this.state.username} onChange={this.changeHandler} />
-            //     <input type="text" name="password" placeholder="password" value={this.state.password} onChange={this.changeHandler} />
-            //     <input type="submit" value="sign up" />
-            // </form>
             <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
             <Grid.Column style={{ maxWidth: 450 }}>
                 <Header as='h2' color='teal' textAlign='center'>

@@ -18,11 +18,6 @@ class Login extends React.Component{
     }
     render(){
         return(
-            // <form >
-            //     <input type="text" name="username" placeholder="username" value={this.state.username}  />
-            //     <input type="text" name="password" placeholder="password" value={this.state.password}  />
-            //     <input type="submit" value="log in" />
-            // </form>
             <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
             <Grid.Column style={{ maxWidth: 450 }}>
                 <Header as='h2' color='teal' textAlign='center'>
