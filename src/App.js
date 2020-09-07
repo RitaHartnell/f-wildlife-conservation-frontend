@@ -7,6 +7,7 @@ import Navbar from './Components/Navbar';
 import UserProfile from './Components/UserProfile';
 import Signup from './Components/Signup';
 import Login from './Components/Login';
+import 'semantic-ui-css/semantic.min.css'
 
 const api = 'http://localhost:3000/api/v1'
 

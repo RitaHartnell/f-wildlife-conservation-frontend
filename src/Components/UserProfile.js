@@ -2,6 +2,7 @@ import React from 'react'
 import FavoriteAnimals from '../Containers/FavoriteAnimals'
 import {Redirect} from 'react-router-dom'
 import myDefault from '../Assets/default.png'
+import ProfileModal from '../ProfileModal'
 
 class UserProfile extends React.Component {
 
@@ -12,15 +13,15 @@ class UserProfile extends React.Component {
         avatar: this.props.user !=null ? this.props.user.user.avatar : ''
     }
 
-    updateUser = () => {
-        const api = 'http://localhost:3000/api/v1/users'
-        let user = {
+    patchUser = () => {
+        const api = 'http://localhost:3000/api/v1/users/'
+        const user = {
             username: this.props.user.user.username,
-            bio: this.state.bio,
-            avatar: this.state.avatar
+            avatar: this.state.avatar,
+            bio: this.state.bio
         }
 
-        fetch(api,
+        fetch(`${api}${this.props.user.user.id}`,
             {
                 method: 'PATCH',
                 body: JSON.stringify(user),
@@ -32,14 +33,12 @@ class UserProfile extends React.Component {
         .then(data => console.log(data))
     }
 
-    updateBio = (e) =>{
-        let bio = e.target.value
-        this.setState({bio: bio}, this.updateUser())
+    imgChange = (e) => {
+        this.setState({avatar: e.target.value})
     }
-
-    updateAvatar = (e) => {
-        let avataURL = e.target.value
-        this.setState({avatar: avataURL}, this.updateUser())
+    
+    bioChange = (e) => {
+        this.setState({bio: e.target.value})
     }
 
     render () {  
@@ -51,14 +50,13 @@ class UserProfile extends React.Component {
             <div>
                 {/*I am going to render my favorites here !*/}
                 <div>
-                    {console.log(this.props.user.user)}
                     <h3>{this.props.user.user.username}'s profile</h3>
                     {
                         this.state.avatar != null ?
-                            <img src={this.state.bio} />
-                        : <img src={myDefault}/>
+                            <img alt='' src={this.state.avatar} />
+                        : <img alt='' src={myDefault}/>
                     }
-                    <button>edit avatar</button>
+                    <ProfileModal avatar={this.state.avatar} bio={this.state.bio} patchUser={this.patchUser} imgChange={this.imgChange} bioChange={this.bioChange}/>
                 </div>
                 <div>
                     <h4>BIO</h4>
@@ -70,7 +68,6 @@ class UserProfile extends React.Component {
                             ""
                         }
                     </p>
-                    <button>edit bio</button>
                 </div>
                 {
                     this.state.animals != null ?
