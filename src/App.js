@@ -8,6 +8,8 @@ import UserProfile from './Components/UserProfile';
 import Signup from './Components/Signup';
 import Login from './Components/Login';
 import Map from './Components/Map';
+import 'semantic-ui-css/semantic.min.css'
+
 const api = 'http://localhost:3000/api/v1'
 
 class App extends React.Component {
@@ -100,7 +102,7 @@ class App extends React.Component {
   }
 
   unfavoriteHandler = (animalObj) => {
-   const favoriteObj = this.state.favorites.find(x => x.animal_id === animalObj.id)
+    const favoriteObj = this.state.favorites.find(x => x.animal_id === animalObj.id)
   fetch(`${api}/favorites/${favoriteObj.id}`, {
         method: "DELETE",
         headers: {
