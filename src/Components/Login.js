@@ -30,9 +30,10 @@ class Login extends React.Component{
                 </Header>
                 <Form size='large' onSubmit={this.submitHandler}>
                     <Segment stacked>
-                    <Form.Input fluid icon='user' iconPosition='left' placeholder='username' onChange={this.changeHandler}/>
+                    <Form.Input name="username" fluid icon='user' iconPosition='left' placeholder='username' onChange={this.changeHandler}/>
                     <Form.Input
                         fluid
+                        name="password"
                         icon='lock'
                         iconPosition='left'
                         placeholder='Password'
@@ -40,7 +41,7 @@ class Login extends React.Component{
                         onChange={this.changeHandler}
                     />
             
-                    <Button color='teal' fluid size='large'>
+                    <Button color='teal' fluid size='large' type='submit'>
                         Login
                     </Button>
                     </Segment>

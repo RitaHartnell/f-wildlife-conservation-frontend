@@ -101,7 +101,7 @@ class App extends React.Component {
   }
 
   unfavoriteHandler = (animalObj) => {
-   const favoriteObj = this.state.favorites.find(x => x.animal_id === animalObj.id)
+    const favoriteObj = this.state.favorites.find(x => x.animal_id === animalObj.id)
   fetch(`${api}/favorites/${favoriteObj.id}`, {
         method: "DELETE",
         headers: {
