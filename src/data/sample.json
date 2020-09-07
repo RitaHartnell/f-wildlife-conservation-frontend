@@ -1,0 +1,100 @@
+
+[
+    {
+      "animal": "African Elephant",
+      "image": "https://c402277.ssl.cf1.rackcdn.com/photos/882/images/hero_full/African_Elephant_7.27.2012_hero_and_circle_HI_53941.jpg?1345532748",
+      "latitude": 4.771850,
+      "longitude": 27.606800
+    },
+    {
+      "animal": "Amur Leopard",
+      "image": "https://c402277.ssl.cf1.rackcdn.com/photos/878/images/hero_full/amur-leopard_99144569.jpg?1345532564",
+      "latitude": 50.544020,
+      "longitude": 136.983820
+    },
+    {
+      "animal": "Black Rhino",
+      "image": "https://c402277.ssl.cf1.rackcdn.com/photos/1376/images/hero_full/Black_Rhino_8.6.2012_Hero_and_Circle_HI_48366.jpg?1345543661",
+      "latitude": -3.055497,
+      "longitude": -60.054681
+    },
+    {
+      "animal": "Bornean Orangutan",
+      "image": "https://c402277.ssl.cf1.rackcdn.com/photos/1145/images/hero_full/Bornean_Orangutan_8.1.2012_hero_and_circle_XL_279107.jpg?1345587030",
+      "latitude": 0.999705,
+      "longitude": 114.549658
+    },
+    {
+      "animal": "Cross River Gorilla",
+      "image": "https://c402277.ssl.cf1.rackcdn.com/photos/18410/images/hero_full/Medium_WW267197.jpg?1578345502",
+      "latitude": 0.999705,
+      "longitude": 114.549658
+    },
+    {
+      "animal": "Green Turtle",
+      "image": "https://c402277.ssl.cf1.rackcdn.com/photos/322/images/hero_full/Green_Turtle_Hero_image_260214.jpg?1345519611",
+      "latitude": 26.768909,
+      "longitude": -110.720881
+    },
+    {
+      "animal": "Hector's Dolphin",
+      "image": "https://c402277.ssl.cf1.rackcdn.com/photos/18412/images/hero_full/shutterstock_1205907409.jpg?1578345858",
+      "latitude": 41.771312,
+      "longitude": -134.603126
+    },
+    {
+      "animal": "Humphead Wrasse",
+      "image": "https://c402277.ssl.cf1.rackcdn.com/photos/18408/images/hero_full/Medium_WW180520.jpg?1578344928",
+      "latitude": -3.601142,
+      "longitude": 41.969531
+    },
+    {
+      "animal": "Indus River Dolphin",
+      "image": "https://c402277.ssl.cf1.rackcdn.com/photos/14861/images/hero_full/Indus_River_Dolphin.jpg?1513270520",
+      "latitude": 24.607069,
+      "longitude": 63.853804
+    },
+    {
+      "animal": "Irrawaddy Dolphin",
+      "image": "https://c402277.ssl.cf1.rackcdn.com/photos/2715/images/hero_full/Mekong_Irrawaddy_Dolphin_breaching_%28c%29_WWF_Greater_Mekong.jpg?1421877230",
+      "latitude": -32.528289,
+      "longitude": 115.34007
+    },
+    {
+      "animal": "Chimpanzee",
+      "image": "https://c402277.ssl.cf1.rackcdn.com/photos/18659/images/hero_full/Medium_WW215321.jpg?1581456540",
+      "latitude": 0.395505,
+      "longitude": 22.654716
+    },
+    {
+      "animal": "Javan Rhino",
+      "image": "https://c402277.ssl.cf1.rackcdn.com/photos/9496/images/hero_full/_H9A0249.jpg?1436885827",
+      "latitude": -32.528289,
+      "longitude": 115.34007
+    },
+    {
+      "animal": "Galápagos Penguin",
+      "image": "https://c402277.ssl.cf1.rackcdn.com/photos/18416/images/hero_full/flipMedium_WW1103163.jpg?1578347303",
+      "latitude": -32.528289,
+      "longitude": 115.34007
+    },
+    {
+      "animal": "Fin Whale",
+      "image": "https://c402277.ssl.cf1.rackcdn.com/photos/307/images/hero_full/Fin_Whale_Hero_and_Circle_Image_107654.jpg?1345568587",
+      "latitude": 71.01696,
+      "longitude": -148.442245
+    },
+    {
+      "animal": "Blue Whale",
+      "image": "https://c402277.ssl.cf1.rackcdn.com/photos/18422/images/hero_full/shutterstock_764499823.jpg?1578408832",
+      "latitude": -37.857507,
+      "longitude": -77.253764
+    },
+    {
+      "animal": "Arctic Fox",
+      "image": "https://c402277.ssl.cf1.rackcdn.com/photos/540/images/hero_full/shutterstock_103864847.jpg?1345525295",
+      "latitude": 76.800739,
+      "longitude": -84.459405
+    }
+  ]
+  

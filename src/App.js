@@ -7,7 +7,7 @@ import Navbar from './Components/Navbar';
 import UserProfile from './Components/UserProfile';
 import Signup from './Components/Signup';
 import Login from './Components/Login';
-
+import Map from './Components/Map';
 const api = 'http://localhost:3000/api/v1'
 
 class App extends React.Component {
@@ -134,6 +134,7 @@ searchArray = () => {
         <Navbar user={this.state.user} logOutHandler={this.logOutHandler}/>
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/map" render={() => <Map />}/>
           <Route exact path="/signup" render={()=> <Signup submitHandler={this.signupHandler}/>}/>
           <Route exact path="/login" render={()=> <Login submitHandler={this.loginHandler}/>}/>
           <Route exact path="/userprofile" render={() => <UserProfile user={this.state.user}/>} />
