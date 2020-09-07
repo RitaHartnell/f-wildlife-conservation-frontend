@@ -1,17 +1,9 @@
-import React, { Component } from "react";
-import MapGL, {
-  Marker,
-  Popup,
-  NavigationControl,
-  FullscreenControl
-} from "react-map-gl";
-
+import React from "react";
+import {Redirect} from 'react-router-dom';
+import MapGL, {Marker, Popup, NavigationControl, FullscreenControl} from "react-map-gl";
 import AnimalPin from "./AnimalPin";
 import AnimalInfo from "./AnimalInfo";
-
 import Animals from "../data/sample.json";
-
-const TOKEN = "pk.eyJ1Ijoic21peWFrYXdhIiwiYSI6ImNqcGM0d3U4bTB6dWwzcW04ZHRsbHl0ZWoifQ.X9cvdajtPbs9JDMG-CMDsA"
 
 const fullscreenControlStyle = {
   position: "absolute",
@@ -28,6 +20,7 @@ const navStyle = {
 };
 
 class Map extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -63,7 +56,7 @@ class Map extends React.Component {
         longitude={animal.longitude}
         latitude={animal.latitude}
       >
-        <AnimalPin size={20} onClick={() => this.setState({ popupInfo: animal })} />
+        <AnimalPin size={20} color={animal.color} onClick={() => this.setState({ popupInfo: animal })} />
       </Marker>
     );
   };
@@ -91,25 +84,31 @@ class Map extends React.Component {
     const { viewport } = this.state;
 
     return (
-      <MapGL
-        {...viewport}
-        width="100vw"
-        height="100vh"
-        mapStyle="mapbox://styles/mapbox/dark-v9"
-        onViewportChange={this._updateViewport}
-        mapboxApiAccessToken={TOKEN}
-      >
-        {Animals.map(this._renderCityMarker)}
+        <>
+        {this.props.user !== null ?   
+            <MapGL
+                {...viewport}
+                width="100vw"
+                height="100vh"
+                mapStyle="mapbox://styles/mapbox/dark-v9"
+                onViewportChange={this._updateViewport}
+                mapboxApiAccessToken={this.props.user.key}
+            >
+                {Animals.map(this._renderCityMarker)}
 
-        {this._renderPopup()}
+                {this._renderPopup()}
 
-        <div className="fullscreen" style={fullscreenControlStyle}>
-          <FullscreenControl />
-        </div>
-        <div className="nav" style={navStyle}>
-          <NavigationControl />
-        </div>
-      </MapGL>
+                <div className="fullscreen" style={fullscreenControlStyle}>
+                <FullscreenControl />
+                </div>
+                <div className="nav" style={navStyle}>
+                <NavigationControl />
+                </div>
+            </MapGL>
+        :
+        <Redirect to="/"/>
+        }
+        </>
     );
   }
 }

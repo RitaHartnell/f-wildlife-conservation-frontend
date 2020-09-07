@@ -52,7 +52,7 @@ class App extends React.Component {
       body: JSON.stringify({ user: userObj })
     })
     .then(resp => resp.json())
-    .then(data => this.setState({ user: data})) 
+    .then(data => this.setState({ user: data}, () => this.props.history.push('/'))) 
   }
 
   loginHandler = (userObj) => {
@@ -128,13 +128,14 @@ searchArray = () => {
 }
 
 
-  render() {  
+  render() { 
+    console.log(this.state.user) 
     return (
       <div className="App">
         <Navbar user={this.state.user} logOutHandler={this.logOutHandler}/>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/map" render={() => <Map />}/>
+          <Route exact path="/map" render={() => <Map user={this.state.user}/>}/>
           <Route exact path="/signup" render={()=> <Signup submitHandler={this.signupHandler}/>}/>
           <Route exact path="/login" render={()=> <Login submitHandler={this.loginHandler}/>}/>
           <Route exact path="/userprofile" render={() => <UserProfile user={this.state.user}/>} />
