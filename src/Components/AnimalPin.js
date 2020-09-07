@@ -10,6 +10,14 @@ const pinStyle = {
   stroke: "none"
 };
 
+  // get rendering context for the map canvas when layer is added to the map
+  onAdd: function() {
+  var canvas = document.createElement('canvas');
+  canvas.width = this.width;
+  canvas.height = this.height;
+  this.context = canvas.getContext('2d');
+  },
+
 export default class AnimalPin extends PureComponent {
   render() {
     const { size = 20, onClick } = this.props;
