@@ -137,6 +137,19 @@ searchArray = () => {
   return this.state.animals.filter(animalObj => animalObj.name.toLowerCase().includes(this.state.searchTerm.toLowerCase()))  
 }
 
+deleteUser = () => {
+  const api = 'http://localhost:3000/api/v1/users/'
+
+  fetch(`${api}${this.state.user.user.id}`,
+      {
+          method: 'DELETE',
+          headers: {
+              'Content-type': 'application/json'
+          }
+      })
+  .then(resp => resp.json())
+  .then(this.setState({user: null}))
+}
 
   render() { 
 
@@ -148,7 +161,7 @@ searchArray = () => {
           <Route exact path="/map" render={() => <Map user={this.state.user}/>}/>
           <Route exact path="/signup" render={()=> <Signup submitHandler={this.signupHandler}/>}/>
           <Route exact path="/login" render={()=> <Login submitHandler={this.loginHandler}/>}/>
-          <Route exact path="/userprofile" render={() => <UserProfile user={this.state.user}/>} />
+          <Route exact path="/userprofile" render={() => <UserProfile deleteUser={this.deleteUser} animals={this.state.favorites} user={this.state.user}/>} />
           <Route exact path="/search" render={() => <AnimalList user={this.state.user} animals={this.searchArray()} searchHandler={this.searchHandler} favoriteHandler={this.favoriteHandler} unfavoriteHandler={this.unfavoriteHandler} userFavorites={this.state.favorites}/>} />
         </Switch>
 

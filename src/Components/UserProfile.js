@@ -3,6 +3,7 @@ import FavoriteAnimals from '../Containers/FavoriteAnimals'
 import {Redirect} from 'react-router-dom'
 import myDefault from '../Assets/default.png'
 import ProfileModal from '../ProfileModal'
+import DeleteModal from '../DeleteModal'
 
 class UserProfile extends React.Component {
 
@@ -41,6 +42,7 @@ class UserProfile extends React.Component {
         this.setState({bio: e.target.value})
     }
 
+
     render () {  
         
         return (
@@ -74,6 +76,7 @@ class UserProfile extends React.Component {
                         <FavoriteAnimals animals={this.state.animals}/>
                     : <h3>You have no favorites!</h3>
                 }
+                <DeleteModal deleteUser={this.props.deleteUser}/>
             </div>
         :
 

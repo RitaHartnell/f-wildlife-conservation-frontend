@@ -4,7 +4,7 @@ import {Redirect} from 'react-router-dom'
 import Search from '../Components/Search'
 
 class AnimalList extends React.Component {
-   constructor(props){
+    constructor(props){
         super(props)
         this.state={
             sortAnimals: [],

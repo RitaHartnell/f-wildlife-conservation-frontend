@@ -1,7 +1,7 @@
 import React from 'react'
-import { Button, Modal, Form } from 'semantic-ui-react'
+import { Button, Modal} from 'semantic-ui-react'
 
-function ProfileModal(props){
+function DeleteModal(props){
     const [open, setOpen] = React.useState(false)
 
     return (
@@ -9,28 +9,25 @@ function ProfileModal(props){
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         open={open}
-        trigger={<Button>Edit Profile</Button>}
+        trigger={<Button>Delete Account</Button>}
         >
-        <Modal.Header>Edit Profile</Modal.Header>
+        <Modal.Header>Delete User?</Modal.Header>
         <Modal.Content image>
             <Modal.Description>
-                <Form>
-                    <Form.Input label='Enter new Photo URL' type='text' onChange={(e)=> props.imgChange(e)}/>
-                    <Form.TextArea label='Bio' placeholder={props.bio} onChange={(e)=> props.bioChange(e)}/>
-                </Form>
+                <p>Are you sure you want to delete your account?</p>
             </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
             <Button color='black' onClick={() => setOpen(false)}>
-            Cancel
+            No, wait
             </Button>
             <Button
-            content="Save"
+            content="Yes, I'm sure"
             labelPosition='right'
             icon='checkmark'
             onClick={() => {
                 setOpen(false)
-                props.patchUser()
+                props.deleteUser()
             }}
             positive
             />
@@ -39,4 +36,4 @@ function ProfileModal(props){
     )
 }
 
-export default ProfileModal
+export default DeleteModal
