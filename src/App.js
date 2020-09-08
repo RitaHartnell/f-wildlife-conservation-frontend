@@ -121,12 +121,6 @@ class App extends React.Component {
   this.setState({ favorites: removeIt })
   }
 
-  // profileGetter = (userObj) => {
-  //   fetch(`${api}/profile`)
-  //   .then(resp => resp.json())
-  //   .then(data => console.log(data))
-  // }
-
 
 searchHandler = e => {
   this.setState({ searchTerm: e.target.value })
@@ -158,11 +152,11 @@ deleteUser = () => {
         <Navbar user={this.state.user} logOutHandler={this.logOutHandler}/>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/map" render={() => <Map user={this.state.user}/>}/>
-          <Route exact path="/signup" render={()=> <Signup submitHandler={this.signupHandler}/>}/>
-          <Route exact path="/login" render={()=> <Login submitHandler={this.loginHandler}/>}/>
-          <Route exact path="/userprofile" render={() => <UserProfile deleteUser={this.deleteUser} animals={this.state.favorites} user={this.state.user}/>} />
-          <Route exact path="/search" render={() => <AnimalList user={this.state.user} animals={this.searchArray()} searchHandler={this.searchHandler} favoriteHandler={this.favoriteHandler} unfavoriteHandler={this.unfavoriteHandler} userFavorites={this.state.favorites}/>} />
+          <Route path="/map" render={() => <Map user={this.state.user}/>}/>
+          <Route path="/signup" render={()=> <Signup submitHandler={this.signupHandler}/>}/>
+          <Route path="/login" render={()=> <Login submitHandler={this.loginHandler}/>}/>
+          <Route path="/userprofile" render={() => <UserProfile deleteUser={this.deleteUser} user={this.state.user}/>} />
+          <Route path="/search" render={() => <AnimalList user={this.state.user} animals={this.searchArray()} searchHandler={this.searchHandler} favoriteHandler={this.favoriteHandler} unfavoriteHandler={this.unfavoriteHandler} userFavorites={this.state.favorites}/>} />
         </Switch>
 
       </div>
