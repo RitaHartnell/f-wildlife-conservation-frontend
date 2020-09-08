@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 
-export default class AnimalInfo extends PureComponent {
+class AnimalInfo extends PureComponent {
   render() {
     const { info } = this.props;
     const displayName = info.animal;
@@ -16,8 +16,10 @@ export default class AnimalInfo extends PureComponent {
             info
           </a>
         </div>
-        <img width={300} src={info.image} />
+        <img width={300} src={info.image} alt={info.animal}/>
       </div>
     );
   }
 }
+
+export default AnimalInfo

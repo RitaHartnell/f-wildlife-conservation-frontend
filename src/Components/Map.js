@@ -90,7 +90,7 @@ class Map extends React.Component {
                 {...viewport}
                 width="100vw"
                 height="100vh"
-                mapStyle="mapbox://styles/mapbox/dark-v9"
+                mapStyle="mapbox://styles/mapbox/streets-v11"
                 onViewportChange={this._updateViewport}
                 mapboxApiAccessToken={this.props.user.key}
             >

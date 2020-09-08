@@ -55,6 +55,10 @@ class App extends React.Component {
     })
     .then(resp => resp.json())
     .then(data => this.setState({ user: data}, () => this.props.history.push('/'))) 
+    .catch(err => {
+      window.alert("Username already taken.");
+      localStorage.removeItem("token")
+    })
   }
 
   loginHandler = (userObj) => {
@@ -71,6 +75,10 @@ class App extends React.Component {
       localStorage.setItem("token", data.jwt)
       this.setState(
         { user: data, favorites: data.user.animals}, () => this.props.history.push('/'))
+    })
+    .catch(err => {
+      window.alert("invalid Username or Password.");
+      localStorage.removeItem("token")
     })
   }
 
@@ -131,7 +139,7 @@ searchArray = () => {
 
 
   render() { 
-    console.log(this.state.user) 
+
     return (
       <div className="App">
         <Navbar user={this.state.user} logOutHandler={this.logOutHandler}/>
@@ -143,6 +151,7 @@ searchArray = () => {
           <Route exact path="/userprofile" render={() => <UserProfile user={this.state.user}/>} />
           <Route exact path="/search" render={() => <AnimalList user={this.state.user} animals={this.searchArray()} searchHandler={this.searchHandler} favoriteHandler={this.favoriteHandler} unfavoriteHandler={this.unfavoriteHandler} userFavorites={this.state.favorites}/>} />
         </Switch>
+
       </div>
     )
   }
