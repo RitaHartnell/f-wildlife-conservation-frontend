@@ -1,14 +1,40 @@
 import React from 'react'
 import logo2 from '../logo/Flatiron Wildlife Conservation Logo.png'
-import {Image, Grid, Header} from 'semantic-ui-react'
+import {Image, Grid, Header, Container, Embed} from 'semantic-ui-react'
+import placeholder from '../Assets/youtube thingie.jpg'
 
 const Home = () => {
     return (
-        <Grid>
-                <Image
-                    src={logo2}
-                    centered
-                />
+        <Grid
+            style={{
+                paddingTop: '0rem',
+                marginTop: '-2rem'
+            }}
+        >
+            <Grid.Row 
+                textAlign='center' 
+                style={{
+                    backgroundColor: "lightblue"
+                }}
+            >
+                <Container>
+                    <Image
+                        src={logo2}
+                        centered
+                    />
+                    <Header as='h2' style={{color: 'dimgrey'}}>We Protecc Animals</Header>
+                </Container>
+            </Grid.Row>
+            <Grid.Row textAlign='center'>
+                <Container>
+                    <Header as='h2'>Here's a video of cute baby animals to make you understand whats at stake</Header>
+                    <Embed
+                        id='SA-JIJbcE2k'
+                        placeholder={placeholder}
+                        source='youtube'
+                    />
+                </Container>
+            </Grid.Row>
             <Grid.Row textAlign='center' columns={2}>
                 <Grid.Column>
                     <Header as='h3'>About Us</Header>
