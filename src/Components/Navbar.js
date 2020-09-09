@@ -7,10 +7,10 @@ const Navbar = (props) => {
     return (
             <Menu>
                 
-                <Menu.Item><NavLink to="/" exact>Home</NavLink></Menu.Item>
-                <Menu.Item><NavLink to="/search" exact>Search</NavLink></Menu.Item>
-                <Menu.Item><NavLink to="/map" exact>Map</NavLink></Menu.Item>
-                <Menu.Item><NavLink to="/userProfile" exact>Profile</NavLink></Menu.Item>
+                <Menu.Item as={NavLink} to="/" exact>Home</Menu.Item>
+                <Menu.Item as={NavLink} to="/search" exact>Search</Menu.Item>
+                <Menu.Item as={NavLink} to="/map" exact>Map</Menu.Item>
+                <Menu.Item as={NavLink} to="/userProfile" exact>Profile</Menu.Item>
                 
                 <Menu.Menu position='right'>
                     {props.user ? 
