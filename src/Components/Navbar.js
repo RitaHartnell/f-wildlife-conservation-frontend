@@ -5,7 +5,7 @@ import {Menu} from 'semantic-ui-react'
 const Navbar = (props) => {
 
     return (
-            <Menu>
+            <Menu fixed='top'>
                 
                 <Menu.Item as={NavLink} to="/" exact>Home</Menu.Item>
                 <Menu.Item as={NavLink} to="/search" exact>Search</Menu.Item>
