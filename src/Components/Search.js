@@ -1,25 +1,45 @@
 import React from 'react'
+import {Container, Search, Form} from 'semantic-ui-react'
 
-function Search (props){
-    return (
-            <div>
-                    <input
-                        type="text"
-                        placeholder={"Search for Animals!"}
-                        value={props.value}
-                        onChange={props.changeHandler}/>
-
-                  <strong>Sort by:</strong>
-                  <label>
-                    <input type="radio" value="Alphabetically" checked={props.alpha ? true : false} onChange={() => {props.sortAlphabetically()}}/>
-                    Alphabetically
-                  </label>
-                  <label>
-                    <input type="radio" value="Status" checked={props.alpha ? false: true} onChange={() => {props.sortStatus()}}/>
-                    Status
-                  </label>
-            </div>
-    )
+function SearchBar (props){
+  return (
+    <Container>
+      <Search
+          input={{ fluid: true }}
+          type="text"
+          placeholder={"Search for Animals!"}
+          showNoResults={false}
+          value={props.value}
+          onSearchChange={props.changeHandler}
+      />
+      <br/>
+      <Container>
+        <Form
+          style={{
+            color: 'dimgrey'
+          }}
+        >
+          <Form.Group inline>
+            <label>Sort:</label>
+            <Form.Radio 
+              label="Alphabetically" 
+              value="Alphabetically"
+              name='sortBy'
+              checked={props.alpha ? true : false} 
+              onChange={() => {props.sortAlphabetically()}}
+            />
+            <Form.Radio 
+              label="By Status" 
+              value="Status" 
+              name='sortBy'
+              checked={props.alpha ? false: true} 
+              onChange={() => {props.sortStatus()}}
+            />
+          </Form.Group>
+        </Form>
+      </Container>
+    </Container>
+  )
 }
 
-export default Search
+export default SearchBar
