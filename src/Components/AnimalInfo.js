@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import '../style/AnimalInfo.css';
+
 class AnimalInfo extends PureComponent {
   handleClick = (displayName) => {
     window.open(`http://en.wikipedia.org/w/index.php?title=Special:Search&search=${displayName}`)

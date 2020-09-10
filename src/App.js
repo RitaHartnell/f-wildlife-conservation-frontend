@@ -8,6 +8,7 @@ import UserProfile from './Components/UserProfile';
 import Signup from './Components/Signup';
 import Login from './Components/Login';
 import Map from './Components/Map';
+import Footer from './Components/Footer';
 import 'semantic-ui-css/semantic.min.css'
 
 const api = 'http://localhost:3000/api/v1'
@@ -207,7 +208,7 @@ class App extends React.Component {
           <Route path="/userprofile" render={() => <UserProfile user={this.state.user} animals={this.listFavorites()} deleteUser={this.deleteUser} patchUser={this.patchUser} imgChange={this.imgChange} bioChange={this.bioChange} unfavoriteHandler={this.unfavoriteHandler} />} />
           <Route path="/search" render={() => <AnimalList user={this.state.user} animals={this.searchArray()} searchHandler={this.searchHandler} favoriteHandler={this.favoriteHandler} unfavoriteHandler={this.unfavoriteHandler} userFavorites={this.state.favorites}/>} />
         </Switch>
-
+        <Route path="/" component={Footer} />
       </div>
     )
   }
