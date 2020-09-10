@@ -92,8 +92,7 @@ class AnimalList extends React.Component {
                         style={{
                             width: '100%',
                             backgroundColor: "lightblue",
-                            paddingTop: '2rem',
-                            paddingBottom: '1rem',
+                            padding: '2rem',
                             marginTop: '-2rem'
                         }}
                     >
@@ -113,7 +112,7 @@ class AnimalList extends React.Component {
                         />
                     </Container>
                     <Container>
-                        <Grid>
+                        <Grid style={{paddingTop: '2rem'}}>
                             {this.makeGrid()}
                         </Grid>
                     </Container>

@@ -1,7 +1,7 @@
 import React from 'react'
 
 
- function AnimalFCard (props){
+function AnimalFCard (props){
 
     return (
         <div className="animal-card">
