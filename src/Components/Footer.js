@@ -14,8 +14,17 @@ function Footer () {
         }
     }
     return (
-        <Grid columns='equal' divided inverted padded>
+        <Grid columns='equal' divided grid>
         <Grid.Row color='black' textAlign='center'>
+        <Grid.Column>
+            <Segment color='white' inverted>
+            <p></p>
+            <p>News</p>
+            <p>Branding</p>
+            <p>Terms of Use</p>
+            <p>Support Request</p>
+            </Segment>
+          </Grid.Column>
           <Grid.Column>
             <Segment color='white' inverted>
             <img className="Github" src={github1} alt="Frontend" onClick={() => handleClick("FE")} />
@@ -33,11 +42,13 @@ function Footer () {
           </Grid.Column>
           <Grid.Column>
             <Segment color='white' inverted>
+            <p className="padding"></p>
             <img className="Donate" src={donate} alt="donate"/>
             </Segment>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row color='black' textAlign='center'>
+            <Grid.Column>© F Wildlife Conservation</Grid.Column>
             <Grid.Column>GitHub FE</Grid.Column>
             <Grid.Column>GitHub BE</Grid.Column>
             <Grid.Column>Email Us</Grid.Column>

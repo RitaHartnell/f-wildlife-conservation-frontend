@@ -1,4 +1,5 @@
 import React from 'react'
+import '../style/AnimalCard.css'
 import {Container, Header, Image, Button, Segment} from 'semantic-ui-react'
 
 
