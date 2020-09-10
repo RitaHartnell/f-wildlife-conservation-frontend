@@ -82,7 +82,7 @@ class Map extends React.Component {
 
   render() {
     const { viewport } = this.state;
-
+    const key = localStorage.getItem("key");
     return (
         <>
         {this.props.user !== null ?   
@@ -92,7 +92,7 @@ class Map extends React.Component {
                 height="100vh"
                 mapStyle="mapbox://styles/mapbox/streets-v11"
                 onViewportChange={this._updateViewport}
-                mapboxApiAccessToken={this.props.user.key}
+                mapboxApiAccessToken={key}
             >
                 {Animals.map(this._renderCityMarker)}
 

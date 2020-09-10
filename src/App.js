@@ -56,10 +56,15 @@ class App extends React.Component {
       body: JSON.stringify({ user: userObj })
     })
     .then(resp => resp.json())
-    .then(data => this.setState({ user: data}, () => this.props.history.push('/'))) 
+    .then(data => {
+      localStorage.setItem("token", data.jwt)
+      localStorage.setItem("key", data.key)
+      this.setState({ user: data}, () => this.props.history.push('/'))
+    }) 
     .catch(err => {
       window.alert("Username already taken.");
       localStorage.removeItem("token")
+      localStorage.removeItem("key")
     })
   }
 
@@ -75,7 +80,7 @@ class App extends React.Component {
     .then(resp => resp.json())
     .then(data => {
       localStorage.setItem("token", data.jwt)
-      
+      localStorage.setItem("key", data.key)
       this.setState(
         { user: data, 
           favorites: data.user.animals, 
@@ -176,6 +181,8 @@ class App extends React.Component {
         })
     .then(resp => resp.json())
     .then(this.setState({user: null}))
+    localStorage.removeItem("token")
+    localStorage.removeItem("key")
   }
 
 
@@ -188,13 +195,13 @@ class App extends React.Component {
   }
 
   render() { 
-    console.log(this.state.favorites)
+    console.log(this.state.key)
     return (
       <div className="App">
         <Navbar user={this.state.user} logOutHandler={this.logOutHandler}/>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/map" render={() => <Map user={this.state.user}/>}/>
+          <Route path="/map" render={() => <Map />}/>
           <Route path="/signup" render={()=> <Signup submitHandler={this.signupHandler}/>}/>
           <Route path="/login" render={()=> <Login submitHandler={this.loginHandler}/>}/>
           <Route path="/userprofile" render={() => <UserProfile  user={this.state.user} animals={this.listFavorites()} deleteUser={this.deleteUser} patchUser={this.patchUser} imgChange={this.imgChange} bioChange={this.bioChange}/>} unfavoriteHandler={this.unfavoriteHandler}/>
