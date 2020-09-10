@@ -19,7 +19,9 @@ class App extends React.Component {
     user: null,
     searchHistory: [],
     favorites: [],
-    searchTerm: ""
+    searchTerm: "",
+    avatar: "",
+    bio: ""
   }
 
   fetchAnimals = () => {
@@ -73,8 +75,13 @@ class App extends React.Component {
     .then(resp => resp.json())
     .then(data => {
       localStorage.setItem("token", data.jwt)
+      
       this.setState(
-        { user: data, favorites: data.user.animals}, () => this.props.history.push('/'))
+        { user: data, 
+          favorites: data.user.animals, 
+          avatar: data.user.avatar, 
+          bio: data.user.bio}, 
+          () => this.props.history.push('/'))
     })
     .catch(err => {
       window.alert("invalid Username or Password.");
@@ -86,6 +93,27 @@ class App extends React.Component {
     localStorage.removeItem("token")
     this.props.history.push("/login")
     this.setState({ user: null })
+  }
+
+  patchUser = () => {
+    const user = {
+        username: this.state.user.user.username,
+        avatar: this.state.avatar,
+        bio: this.state.bio
+    }
+
+    fetch(`${api}/users/${this.state.user.user.id}`,
+        {
+            method: 'PATCH',
+            body: JSON.stringify(user),
+            headers: {
+                'Content-type': 'application/json'
+            }
+        })
+    .then(resp => resp.json())
+    .then(data => this.setState({
+      user: data
+    }))
   }
 
   favoriteHandler = (animalObj) => {
@@ -103,7 +131,7 @@ class App extends React.Component {
     fetch(`${api}/favorites`, settings) 
     .then(resp => resp.json())
     .then(data => {
-      const newfav = data.favorite
+      const newfav = JSON.parse(data.favorite)
       this.setState({ favorites: [...this.state.favorites, newfav]})
     })
   
@@ -122,31 +150,45 @@ class App extends React.Component {
   }
 
 
-searchHandler = e => {
-  this.setState({ searchTerm: e.target.value })
-  
-}
+  searchHandler = e => {
+    this.setState({ searchTerm: e.target.value })
+    
+  }
 
-searchArray = () => {
-  return this.state.animals.filter(animalObj => animalObj.name.toLowerCase().includes(this.state.searchTerm.toLowerCase()))  
-}
+  searchArray = () => {
+    return this.state.animals.filter(animalObj => animalObj.name.toLowerCase().includes(this.state.searchTerm.toLowerCase()))  
+  }
 
-deleteUser = () => {
-  const api = 'http://localhost:3000/api/v1/users/'
+  listFavorites = () => {
+    return this.state.animals.filter(animalObj => this.state.favorites.find(favObj => animalObj.id === favObj.animal_id))
 
-  fetch(`${api}${this.state.user.user.id}`,
-      {
-          method: 'DELETE',
-          headers: {
-              'Content-type': 'application/json'
-          }
-      })
-  .then(resp => resp.json())
-  .then(this.setState({user: null}))
-}
+  }
+
+  deleteUser = () => {
+    const api = 'http://localhost:3000/api/v1/users/'
+
+    fetch(`${api}${this.state.user.user.id}`,
+        {
+            method: 'DELETE',
+            headers: {
+                'Content-type': 'application/json'
+            }
+        })
+    .then(resp => resp.json())
+    .then(this.setState({user: null}))
+  }
+
+
+  imgChange = (e) => {
+    this.setState({avatar: e.target.value})
+  }
+
+  bioChange = (e) => {
+    this.setState({bio: e.target.value})
+  }
 
   render() { 
-
+    console.log(this.state.favorites)
     return (
       <div className="App">
         <Navbar user={this.state.user} logOutHandler={this.logOutHandler}/>
@@ -155,7 +197,7 @@ deleteUser = () => {
           <Route path="/map" render={() => <Map user={this.state.user}/>}/>
           <Route path="/signup" render={()=> <Signup submitHandler={this.signupHandler}/>}/>
           <Route path="/login" render={()=> <Login submitHandler={this.loginHandler}/>}/>
-          <Route path="/userprofile" render={() => <UserProfile deleteUser={this.deleteUser} user={this.state.user}/>} />
+          <Route path="/userprofile" render={() => <UserProfile  user={this.state.user} animals={this.listFavorites()} deleteUser={this.deleteUser} patchUser={this.patchUser} imgChange={this.imgChange} bioChange={this.bioChange}/>} unfavoriteHandler={this.unfavoriteHandler}/>
           <Route path="/search" render={() => <AnimalList user={this.state.user} animals={this.searchArray()} searchHandler={this.searchHandler} favoriteHandler={this.favoriteHandler} unfavoriteHandler={this.unfavoriteHandler} userFavorites={this.state.favorites}/>} />
         </Switch>
 
