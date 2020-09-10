@@ -1,0 +1,25 @@
+figure {
+    max-width: 300px;
+	margin: 0;
+	padding: 0;
+	background: #fff;
+    overflow: hidden;
+    border-radius: 25px 25px 25px 25px;
+}
+
+.container figure img {
+    width: 100%;
+    height: auto;
+	-webkit-filter: grayscale(0) blur(0);
+	filter: grayscale(0) blur(0);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.container figure:hover img {
+	-webkit-filter: grayscale(100%) blur(3px);
+	filter: grayscale(100%) blur(3px);
+}
+.container figure:hover .tooltiptext {
+    visibility: visible;
+  }
+

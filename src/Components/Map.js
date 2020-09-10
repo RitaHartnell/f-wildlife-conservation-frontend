@@ -4,6 +4,7 @@ import MapGL, {Marker, Popup, NavigationControl, FullscreenControl} from "react-
 import AnimalPin from "./AnimalPin";
 import AnimalInfo from "./AnimalInfo";
 import Animals from "../data/sample.json";
+import '../style/Map.css';
 
 const fullscreenControlStyle = {
   position: "absolute",
@@ -67,7 +68,8 @@ class Map extends React.Component {
     return (
       popupInfo && (
         <Popup
-          tipSize={5}
+          className="container"
+          tipSize={1}
           anchor="top"
           longitude={popupInfo.longitude}
           latitude={popupInfo.latitude}

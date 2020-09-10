@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './style/App.css';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import Home from './Components/Home';
 import AnimalList from './Containers/AnimalList';
