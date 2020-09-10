@@ -25,12 +25,6 @@ class AnimalList extends React.Component {
         this.setState({ sortAnimals: sortByStatus, alpha: false, display: []})
     }
     
-    clickHandler = (animalObj) => {
-        this.setState({
-            display: [...this.state.display, animalObj]
-        })
-    }
-
     makeGrid = () => {
         let animalCopy = [...this.props.animals]
         let gridArray = []
@@ -74,7 +68,21 @@ class AnimalList extends React.Component {
             })
         )
     }
+    
+    clickHandler = (animalObj) => {
+      let listCheck = this.state.display.find(animal => animal === animalObj)
+      if(listCheck){
+          let newDisplay = this.state.display.filter(animal => animal !== animalObj)
+          this.setState({
+              display: newDisplay
+          })
+      }else{
+          this.setState({
+              display: [...this.state.display, animalObj]
+          })
+      }
 
+    }
     render(){
         return (
             <>

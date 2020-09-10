@@ -1,7 +1,5 @@
 import React from 'react'
 
-//for now we are showing all the info but it would be cool if its starts out as name/images
-//onclick will popup the card to show the full details
 
  function AnimalCard (props){
     return (
