@@ -70,17 +70,17 @@ class AnimalList extends React.Component {
     }
     
     clickHandler = (animalObj) => {
-      let listCheck = this.state.display.find(animal => animal === animalObj)
-      if(listCheck){
-          let newDisplay = this.state.display.filter(animal => animal !== animalObj)
-          this.setState({
-              display: newDisplay
-          })
-      }else{
-          this.setState({
-              display: [...this.state.display, animalObj]
-          })
-      }
+        let listCheck = this.state.display.find(animal => animal === animalObj)
+        if(listCheck){
+            let newDisplay = this.state.display.filter(animal => animal !== animalObj)
+            this.setState({
+                display: newDisplay
+            })
+        }else{
+            this.setState({
+                display: [...this.state.display, animalObj]
+            })
+    }
 
     }
     render(){
