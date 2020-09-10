@@ -76,7 +76,7 @@ class UserProfile extends React.Component {
                         <Grid.Row>
                             <Grid.Column width={6}>
                                 {
-                                    this.props.user.user.avatar != null ?
+                                    this.props.user.user.avatar !== null && this.props.user.user.avatar !== '' ?
                                         <Image alt='' src={this.props.user.user.avatar} circular/>
                                     : <Image alt='' src={myDefault} circular/>
                                 }
