@@ -19,6 +19,10 @@ figure {
 	-webkit-filter: grayscale(100%) blur(3px);
 	filter: grayscale(100%) blur(3px);
 }
+.tooltiptext {
+    text-align: center;
+}
+
 .container figure:hover .tooltiptext {
     visibility: visible;
   }
