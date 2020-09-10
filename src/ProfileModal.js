@@ -21,18 +21,18 @@ function ProfileModal(props){
             </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
-            <Button color='black' onClick={() => setOpen(false)}>
+            <Button color='grey' onClick={() => setOpen(false)}>
             Cancel
             </Button>
             <Button
             content="Save"
             labelPosition='right'
             icon='checkmark'
+            color='teal'
             onClick={() => {
                 setOpen(false)
                 props.patchUser()
             }}
-            positive
             />
         </Modal.Actions>
         </Modal>

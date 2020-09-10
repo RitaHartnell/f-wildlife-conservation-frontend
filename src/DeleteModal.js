@@ -18,7 +18,7 @@ function DeleteModal(props){
             </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
-            <Button color='black' onClick={() => setOpen(false)}>
+            <Button color='grey' onClick={() => setOpen(false)}>
             No, wait
             </Button>
             <Button
@@ -29,7 +29,7 @@ function DeleteModal(props){
                 setOpen(false)
                 props.deleteUser()
             }}
-            positive
+            color='teal'
             />
         </Modal.Actions>
         </Modal>
