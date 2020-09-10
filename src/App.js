@@ -195,7 +195,7 @@ class App extends React.Component {
   }
 
   render() { 
-    console.log(this.state.key)
+
     return (
       <div className="App">
         <Navbar user={this.state.user} logOutHandler={this.logOutHandler}/>
@@ -204,7 +204,7 @@ class App extends React.Component {
           <Route path="/map" render={() => <Map />}/>
           <Route path="/signup" render={()=> <Signup submitHandler={this.signupHandler}/>}/>
           <Route path="/login" render={()=> <Login submitHandler={this.loginHandler}/>}/>
-          <Route path="/userprofile" render={() => <UserProfile  user={this.state.user} animals={this.listFavorites()} deleteUser={this.deleteUser} patchUser={this.patchUser} imgChange={this.imgChange} bioChange={this.bioChange}/>} unfavoriteHandler={this.unfavoriteHandler}/>
+          <Route path="/userprofile" render={() => <UserProfile user={this.state.user} animals={this.listFavorites()} deleteUser={this.deleteUser} patchUser={this.patchUser} imgChange={this.imgChange} bioChange={this.bioChange} unfavoriteHandler={this.unfavoriteHandler} />} />
           <Route path="/search" render={() => <AnimalList user={this.state.user} animals={this.searchArray()} searchHandler={this.searchHandler} favoriteHandler={this.favoriteHandler} unfavoriteHandler={this.unfavoriteHandler} userFavorites={this.state.favorites}/>} />
         </Switch>
 
