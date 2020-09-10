@@ -14,45 +14,58 @@ function Footer () {
         }
     }
     return (
-        <Grid columns='equal' divided grid>
+      <Grid 
+        columns='equal' 
+        style={{
+          paddingLeft: '1rem',
+          paddingRight: '1rem'
+        }}
+      >
         <Grid.Row color='black' textAlign='center'>
-        <Grid.Column>
-            <Segment color='white' inverted>
-            <p></p>
-            <p>News</p>
-            <p>Branding</p>
-            <p>Terms of Use</p>
-            <p>Support Request</p>
+          <Grid.Column>
+            <Segment inverted>
+              <p>News</p>
+              <p>Branding</p>
+              <p>Terms of Use</p>
+              <p>Support Request</p>
+              <p>© F Wildlife Conservation</p>
             </Segment>
           </Grid.Column>
           <Grid.Column>
-            <Segment color='white' inverted>
-            <img className="Github" src={github1} alt="Frontend" onClick={() => handleClick("FE")} />
-            </Segment>
+            <Segment.Group>
+              <Segment inverted>
+                <img className="Github" src={github1} alt="Frontend" onClick={() => handleClick("FE")} />
+              </Segment>
+              <Segment inverted>GitHub FE</Segment>
+            </Segment.Group>
           </Grid.Column>
           <Grid.Column>
-            <Segment color='white' inverted>
-            <img className="Github" src={github1} alt="Backend" onClick={() => handleClick("BE")} />
-            </Segment>
+            <Segment.Group>
+              <Segment inverted>
+                <img className="Github" src={github1} alt="Backend" onClick={() => handleClick("BE")} />
+              </Segment>
+              <Segment inverted>GitHub BE</Segment>
+            </Segment.Group>
           </Grid.Column>
           <Grid.Column>
-            <Segment color='white' inverted>
-            <img className="Github" src={email} alt="email"/>
-            </Segment>
+            <Segment.Group>
+              <Segment inverted>
+                <img className="Github" src={email} alt="email"/>
+              </Segment>
+              <Segment inverted>Email Us</Segment>
+            </Segment.Group>
           </Grid.Column>
           <Grid.Column>
-            <Segment color='white' inverted>
-            <p className="padding"></p>
-            <img className="Donate" src={donate} alt="donate"/>
-            </Segment>
+            <Segment.Group>
+              <Segment inverted>
+                <img className="Donate" src={donate} alt="donate"/>
+              </Segment>
+              <Segment inverted>
+                <p className='padding'></p>
+                Donate
+              </Segment>
+            </Segment.Group>
           </Grid.Column>
-        </Grid.Row>
-        <Grid.Row color='black' textAlign='center'>
-            <Grid.Column>© F Wildlife Conservation</Grid.Column>
-            <Grid.Column>GitHub FE</Grid.Column>
-            <Grid.Column>GitHub BE</Grid.Column>
-            <Grid.Column>Email Us</Grid.Column>
-            <Grid.Column>Donate</Grid.Column>
         </Grid.Row>
       </Grid>    
     )
