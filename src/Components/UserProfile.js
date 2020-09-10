@@ -44,7 +44,6 @@ class UserProfile extends React.Component {
     }
 
     render () {  
-        console.log(this.props.animals)
         return (
         <>
         {this.props.user != null ?    
