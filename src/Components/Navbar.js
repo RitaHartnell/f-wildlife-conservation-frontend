@@ -11,6 +11,7 @@ const Navbar = (props) => {
                 <Menu.Item as={NavLink} to="/search" exact>Search</Menu.Item>
                 <Menu.Item as={NavLink} to="/map" exact>Map</Menu.Item>
                 <Menu.Item as={NavLink} to="/userProfile" exact>Profile</Menu.Item>
+                <Menu.Item as={NavLink} to="/takeaction" exact>Take Action</Menu.Item>
                 
                 <Menu.Menu position='right'>
                     {props.user ? 
