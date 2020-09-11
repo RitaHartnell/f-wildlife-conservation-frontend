@@ -13,11 +13,11 @@ function AnimalFCard (props){
                 </Segment>
                 <Segment.Group>
                     <Segment>
-                        <p> status: {props.animal.status}</p>
-                        <p> scientific name: {props.animal.scientific_name}</p>
-                        <p> population: {props.animal.population}</p>
-                        <p> locations: {props.animal.locations.join(', ')} </p>
-                        <p> facts: {props.animal.facts}</p>
+                        <p> Status: {props.animal.status}</p>
+                        <p> Scientific name: {props.animal.scientific_name}</p>
+                        <p> Population: {props.animal.population}</p>
+                        <p> Locations: {props.animal.locations.join(', ')} </p>
+                        <p> Facts: {props.animal.facts}</p>
                     </Segment>
                     <Segment>
                         <Button 

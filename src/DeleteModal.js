@@ -9,7 +9,7 @@ function DeleteModal(props){
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         open={open}
-        trigger={<Button>Delete Account</Button>}
+        trigger={<Button >Delete Account</Button>}
         >
         <Modal.Header>Delete User?</Modal.Header>
         <Modal.Content image>

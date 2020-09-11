@@ -115,6 +115,7 @@ class UserProfile extends React.Component {
                 }
                 </Container>
                 <DeleteModal deleteUser={this.props.deleteUser}/>
+                <p margin-bottom="70px">  </p>
             </>
         :
 

@@ -17,9 +17,9 @@ function Footer () {
       <Grid 
         columns='equal' 
         style={{
-          paddingLeft: '1rem',
-          paddingRight: '1rem'
-        }}
+            paddingLeft: '1rem',
+            paddingRight: '1rem'
+          }}
       >
         <Grid.Row color='black' textAlign='center'>
           <Grid.Column>
@@ -27,13 +27,12 @@ function Footer () {
               <p>News</p>
               <p>Branding</p>
               <p>Terms of Use</p>
-              <p>Support Request</p>
               <p>© F Wildlife Conservation</p>
             </Segment>
           </Grid.Column>
           <Grid.Column>
             <Segment.Group>
-              <Segment inverted>
+              <Segment inverted color='black'>
                 <img className="Github" src={github1} alt="Frontend" onClick={() => handleClick("FE")} />
               </Segment>
               <Segment inverted>GitHub FE</Segment>
@@ -41,7 +40,7 @@ function Footer () {
           </Grid.Column>
           <Grid.Column>
             <Segment.Group>
-              <Segment inverted>
+              <Segment inverted color='black'>
                 <img className="Github" src={github1} alt="Backend" onClick={() => handleClick("BE")} />
               </Segment>
               <Segment inverted>GitHub BE</Segment>
@@ -49,7 +48,7 @@ function Footer () {
           </Grid.Column>
           <Grid.Column>
             <Segment.Group>
-              <Segment inverted>
+              <Segment inverted color='black'>
                 <img className="Github" src={email} alt="email"/>
               </Segment>
               <Segment inverted>Email Us</Segment>
@@ -57,7 +56,7 @@ function Footer () {
           </Grid.Column>
           <Grid.Column>
             <Segment.Group>
-              <Segment inverted>
+              <Segment inverted color='black'>
                 <img className="Donate" src={donate} alt="donate"/>
               </Segment>
               <Segment inverted>

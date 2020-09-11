@@ -1,5 +1,6 @@
 p {
     text-align: left;
+    font-size: 15px;
 }
 
 .image-main {
@@ -8,14 +9,45 @@ p {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    opacity: 1;
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
 }
 
-.image-list {
-    width: "100%";
+.container-animalcard {
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.image-cards:hover {
+    transform: translateY(-0.5rem) scale(1.0125);
+    box-shadow: 0 6px 9px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background: rgba(0, 0, 0, .3);
+}
+
+
+.title{
+    position: absolute;
+    opacity: .7;
+    width: 100%;
+    left: 0;
+    top: 140px;
+    font-weight: 700;
+    font-size: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    z-index: 1;
+    background: rgb(63, 63, 63);
+	display: inline;
+    transition: top .5s ease;
 }
 
 .image-title {
-    letter-spacing: 3px; 
+    letter-spacing: 4px; 
     text-align: center;
-    font-size: 250%;
+    font-family: Montserrat, sans-serif;
+    font-weight: normal;
+
 }
