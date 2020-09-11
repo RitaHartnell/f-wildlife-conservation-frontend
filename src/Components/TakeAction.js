@@ -16,17 +16,18 @@ class TakeAction extends Component {
     render() {
       return (
         <div>
-            <Header>Donation Goal</Header>
+            <Header as='h1' style={{color: 'dimgrey'}}>Donation Goal</Header>
             <Progress percent={this.state.percent} indicating progress />
                 <Header as='h2' style={{color: 'dimgrey'}}>How can you help?</Header>
             <Segment.Group>
-            <Segment as='h3' style={{color: 'dimgrey'}}>Write to Congress and your local government </Segment>
-            <Segment as='h3' style={{color: 'dimgrey'}}>Run a marathon. Plan a community project. Join a Fundraiser.</Segment>
-            <Segment as='h3' style={{color: 'dimgrey'}}>And above all else... Donate!</Segment>
+            <Segment as='h3' inverted color='blue' style={{color: 'dimgrey'}}>Write to Congress and your local government </Segment>
+            <Segment as='h3' inverted color='blue' secondary style={{color: 'dimgrey'}}>Run a marathon. Plan a community project. Join a Fundraiser.</Segment>
+            <Segment as='h3' inverted color='blue' tertiary style={{color: 'dimgrey'}}>And above all else... Donate!</Segment>
             </Segment.Group>
+            <Header as='h3' color='blue' style={{color: 'dimgrey', paddingTop: '30px'}}> Not convinced? Watch these videos </Header>
             <Segment.Group horizontal>
-            <Segment>
-                Australia’s wildlife needs your help!
+            <Segment color='teal'>
+            <Header as='h3'>Australia’s wildlife needs your help!</Header>
                 <Segment>
                 <Embed
                 id='GdtQQFjQJjA'
@@ -35,13 +36,14 @@ class TakeAction extends Component {
                 />
                 </Segment>
             </Segment>
-            <Segment>Why thousands of Whales Die Every Year!
+            <Segment color='teal'>
+                <Header as='h3'>Why thousands of Whales Die Every Year!</Header>
                 <Segment>
-            <Embed
-                id='skVKgSbve9I'
-                placeholder={youtube3}
-                source='youtube'
-                />
+                    <Embed
+                    id='skVKgSbve9I'
+                    placeholder={youtube3}
+                    source='youtube'
+                    />
                 </Segment>
             </Segment>
             </Segment.Group>
